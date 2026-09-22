@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chemical Quest: Balance of Elements</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     START SCREEN
+===================================================== -->
+
+<section id="startScreen" class="screen active">
+
+    <div class="stars"></div>
+
+    <div class="title-panel">
+
+        <div class="pixel-label">
+            ── CHEMISTRY RPG ──
+        </div>
+
+        <h1>
+            CHEMICAL
+            <span>QUEST</span>
+        </h1>
+
+        <div class="title-divider"></div>
+
+        <p class="subtitle">
+            THE BALANCE OF ELEMENTS
+        </p>
+
+        <p class="intro">
+            A strange disturbance has appeared in the
+            Elemental Laboratory. Chemical reactions are
+            becoming unstable.
+        </p>
+
+        <p class="intro">
+            Choose your scientist, enter the worlds,
+            defeat the reaction guardians, and restore
+            the balance of matter.
+        </p>
+
+        <button id="startButton" class="rpg-button">
+            ▶ START ADVENTURE
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CHARACTER SELECTION
+===================================================== -->
+
+<section id="characterScreen" class="screen">
+
+    <div class="screen-heading">
+
+        <div class="pixel-label">
+            ── CHAPTER I ──
+        </div>
+
+        <h1>CHOOSE YOUR SCIENTIST</h1>
+
+        <p>
+            Select a character to begin your chemical quest.
+        </p>
+
+    </div>
+
+
+    <div class="characters">
+
+
+        <!-- ARIA -->
+
+        <div class="character-card"
+             data-character="aria">
+
+            <div class="character-frame">
+
+                <img
+                    src="C:\Users\manas\OneDrive\Desktop\chem.balancing\images\aria.jpg"
+                    class="character-image"
+                    alt="Aria"
+                >
+
+            </div>
+
+            <h2>ARIA</h2>
+
+            <div class="character-class">
+                THE OBSERVER
+            </div>
+
+            <p class="character-description">
+                A careful scientist who studies every
+                reaction before making a move.
+            </p>
+
+            <button
+                class="select-button"
+                data-character="aria">
+
+                SELECT ARIA
+
+            </button>
+
+        </div>
+
+
+        <!-- NOVA -->
+
+        <div class="character-card"
+             data-character="nova">
+
+            <div class="character-frame">
+
+                <img
+                    src="C:\Users\manas\OneDrive\Desktop\chem.balancing\images\nova.jpg"
+                    class="character-image"
+                    alt="Nova"
+                >
+
+            </div>
+
+            <h2>NOVA</h2>
+
+            <div class="character-class">
+                THE ANALYST
+            </div>
+
+            <p class="character-description">
+                A logical scientist who searches for
+                patterns hidden inside reactions.
+            </p>
+
+            <button
+                class="select-button"
+                data-character="nova">
+
+                SELECT NOVA
+
+            </button>
+
+        </div>
+
+
+        <!-- REX -->
+
+        <div class="character-card"
+             data-character="rex">
+
+            <div class="character-frame">
+
+                <img
+                    src="C:\Users\manas\OneDrive\Desktop\chem.balancing\images\rex.jpg"
+                    class="character-image"
+                    alt="Rex"
+                >
+
+            </div>
+
+            <h2>REX</h2>
+
+            <div class="character-class">
+                THE EXPERIMENTER
+            </div>
+
+            <p class="character-description">
+                A hands-on researcher who is always ready
+                to test a new chemical reaction.
+            </p>
+
+            <button
+                class="select-button"
+                data-character="rex">
+
+                SELECT REX
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GAME SCREEN
+===================================================== -->
+
+<section id="gameScreen" class="screen">
+
+
+    <!-- TOP RPG HUD -->
+
+    <header class="game-header">
+
+        <div class="player-hud">
+
+            <img
+                id="playerAvatar"
+                src="C:\Users\manas\OneDrive\Desktop\chem.balancing\images\aria.jpg"
+                alt="Player"
+            >
+
+            <div>
+
+                <small>SCIENTIST</small>
+
+                <h3 id="playerName">
+                    ARIA
+                </h3>
+
+                <div class="xp-text">
+                    XP:
+                    <span id="xpValue">0</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="world-hud">
+
+            <small id="worldNumber">
+                WORLD 1
+            </small>
+
+            <h2 id="worldName">
+                LABORATORY RUINS
+            </h2>
+
+            <div class="stage-text">
+
+                LEVEL
+                <span id="levelNumber">1</span>
+                /
+                <span id="levelTotal">5</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="life-hud">
+
+            <small>
+                LIFE
+            </small>
+
+            <div id="hearts">
+
+                <span class="heart">♥</span>
+                <span class="heart">♥</span>
+                <span class="heart">♥</span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- WORLD PROGRESS -->
+
+    <div class="world-progress">
+
+        <div id="progressBar" class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN RPG AREA -->
+
+    <main class="battle-area">
+
+
+        <!-- ENEMY -->
+
+        <div class="enemy-area">
+
+            <div class="enemy-name">
+
+                <span id="enemyWorld">
+                    ENEMY
+                </span>
+
+                <strong id="enemyName">
+                    ATOM SLIME
+                </strong>
+
+            </div>
+
+
+            <div class="enemy-hp">
+
+                <div class="hp-label">
+                    HP
+                </div>
+
+                <div class="hp-bar">
+
+                    <div
+                        id="enemyHp"
+                        class="hp-fill">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="enemySprite"
+                class="enemy-sprite">
+                🧪
+            </div>
+
+            <div
+                id="enemyDialogue"
+                class="enemy-dialogue">
+
+                "Your reaction is unbalanced!"
+
+            </div>
+
+        </div>
+
+
+        <!-- BATTLE DIVIDER -->
+
+        <div class="battle-divider">
+
+            <span>⚔</span>
+
+            <div></div>
+
+            <span>⚗</span>
+
+        </div>
+
+
+        <!-- PLAYER -->
+
+        <div class="player-battle">
+
+            <div class="battle-character-frame">
+
+                <img
+                    id="battleCharacter"
+                    src="C:\Users\manas\OneDrive\Desktop\chem.balancing\images\aria.jpg"
+                    alt="Scientist"
+                >
+
+            </div>
+
+            <div class="player-battle-name">
+
+                <span id="battlePlayerName">
+                    ARIA
+                </span>
+
+                <small>
+                    CHEMICAL ALCHEMIST
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- STORY -->
+
+        <div class="story-box">
+
+            <div class="story-title">
+                ✦ FIELD NOTES
+            </div>
+
+            <p id="storyText">
+                Balance the reaction to attack the enemy.
+            </p>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div class="question-panel">
+
+            <div class="question-instruction">
+                BALANCE THE CHEMICAL EQUATION
+            </div>
+
+            <div
+                id="equation"
+                class="equation">
+                H₂ + O₂ → H₂O
+            </div>
+
+
+            <div class="answer-area">
+
+                <div class="answer-title">
+                    ENTER THE COEFFICIENTS
+                </div>
+
+                <div
+                    id="coefficientInputs"
+                    class="coefficient-inputs">
+                </div>
+
+                <button
+                    id="attackButton"
+                    class="attack-button">
+
+                    ⚔ BALANCE & ATTACK
+
+                </button>
+
+                <div
+                    id="feedback"
+                    class="feedback">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HINT -->
+
+        <button
+            id="hintButton"
+            class="hint-button">
+
+            ? HINT
+
+        </button>
+
+
+    </main>
+
+</section>
+
+
+<!-- =====================================================
+     WORLD COMPLETE
+===================================================== -->
+
+<section
+    id="worldCompleteScreen"
+    class="screen result-screen">
+
+    <div class="result-panel">
+
+        <div class="result-icon">
+            ★
+        </div>
+
+        <div class="pixel-label">
+            WORLD CLEARED
+        </div>
+
+        <h1 id="completeWorldName">
+            WORLD COMPLETE
+        </h1>
+
+        <p id="completeMessage">
+            The enemies have been defeated.
+        </p>
+
+        <div class="reward-box">
+
+            <span>
+                EXPERIENCE
+            </span>
+
+            <strong id="worldXP">
+                +100 XP
+            </strong>
+
+        </div>
+
+        <button
+            id="nextWorldButton"
+            class="rpg-button">
+
+            ▶ ENTER NEXT WORLD
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GAME OVER
+===================================================== -->
+
+<section
+    id="gameOverScreen"
+    class="screen result-screen">
+
+    <div class="result-panel game-over">
+
+        <div class="result-icon">
+            ☠
+        </div>
+
+        <div class="pixel-label">
+            ADVENTURE FAILED
+        </div>
+
+        <h1>
+            OUT OF LIVES
+        </h1>
+
+        <p>
+            The reaction remains unbalanced.
+            Study the atoms and try again.
+        </p>
+
+        <button
+            id="retryButton"
+            class="rpg-button">
+
+            ↻ RETRY LEVEL
+
+        </button>
+
+        <button
+            id="characterReturnButton"
+            class="secondary-button">
+
+            CHANGE SCIENTIST
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL VICTORY
+===================================================== -->
+
+<section
+    id="victoryScreen"
+    class="screen result-screen">
+
+    <div class="result-panel victory">
+
+        <div class="result-icon">
+            ✦
+        </div>
+
+        <div class="pixel-label">
+            THE LABORATORY IS RESTORED
+        </div>
+
+        <h1>
+            CHEMICAL MASTER
+        </h1>
+
+        <p>
+            You restored balance to every reaction
+            and defeated every guardian.
+        </p>
+
+        <div class="final-stats">
+
+            <div>
+
+                <small>
+                    TOTAL XP
+                </small>
+
+                <strong id="finalXP">
+                    0
+                </strong>
+
+            </div>
+
+            <div>
+
+                <small>
+                    WORLDS
+                </small>
+
+                <strong>
+                    3
+                </strong>
+
+            </div>
+
+            <div>
+
+                <small>
+                    LEVELS
+                </small>
+
+                <strong>
+                    15
+                </strong>
+
+            </div>
+
+        </div>
+
+        <button
+            id="restartButton"
+            class="rpg-button">
+
+            ↻ PLAY AGAIN
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
